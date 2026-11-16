@@ -1,3 +1,5 @@
+prose word count:662
+
 # IIS A2 — AI Answer Verification
 
 ## Project Overview
@@ -47,13 +49,22 @@ Run:
 
 **2. Configure the API**
 
-Copy `.env.example` to `.env`, then provide a valid `LLM_API_KEY`.
+The prototype uses the OpenAI python SDK with the Chat Completions API format. It has been developed and tested using Qwen. Other providers may be usable if they support compatible requests and response, but compatibility with other providers has not been tested.
 
-Alternatively, configure `LLM_API_KEY` as an operating-system environment variable.
+Obtain your own API key from your chosen provider's official developer platform. Check its documentation for a compatible Chat Completions base URL and a model available to your account.
 
-The API endpoint and model name are configured using `LLM_BASE_URL` and `LLM_MODEL`.
+Copy`.env.example`to`.env`in the project directory, alongside`app.py`and`main.py`.Configure these three varibles:
 
-Do not publish API keys.
+```dotenv
+LLM_API_KEY= your own API key
+LLM_BASE_URL= your provider base url
+LLM_MODEL= your available model id
+```
+replace the placeholder values with your own configuration. Keep the variable names unchanged. the key, endpoint and model must match your chosen provider and account; do not change only the key while leaving another provider's endpoint or model.
+
+Providers requiring a different API format or authentication method may require changes to `main.py`.
+
+Save the configuration before starting the application. do not commit `env` or real Api key to this repository!
 
 **3. Start the application**
 
